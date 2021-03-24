@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class ScoreKeeper : MonoBehaviour
 {
@@ -8,10 +10,25 @@ public class ScoreKeeper : MonoBehaviour
     int leftScore = 0;
     int rightScore = 0;
 
-    public void Goal()
+    [SerializeField]
+    TextMeshProUGUI leftScoreTXT;
+
+    [SerializeField]
+    TextMeshProUGUI rightScoreTXT;
+
+    public void Goal(Wall.WallName parede)
     {
-        leftScore = leftScore + 1;
-        rightScore = rightScore + 1;
+        if(parede == Wall.WallName.Right)
+        {
+            leftScore = leftScore + 1;
+            leftScoreTXT.text = leftScore.ToString();
+
+        } else if (parede == Wall.WallName.Left)
+        {
+            rightScore = rightScore + 1;
+            rightScoreTXT.text = rightScore.ToString();
+        }
+
         Debug.Log(leftScore + " " + rightScore);
     }
 }

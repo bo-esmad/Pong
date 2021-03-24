@@ -23,6 +23,7 @@ public class Ball : MonoBehaviour
         //{
         //    GetComponent<Rigidbody2D>().velocity = velocidade * Vector2.left;
         //}
+        Reset();
     }
 
 
@@ -40,6 +41,15 @@ public class Ball : MonoBehaviour
                 bolaFoiLancada = true;
             }
         }
+    }
+
+    public void Reset()
+    {
+        transform.position = Vector3.zero;
+        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+
+        bolaFoiLancada = false;
+        tempoDecorrido = 0f;
     }
 
 }
